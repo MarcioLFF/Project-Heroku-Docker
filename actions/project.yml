@@ -1,0 +1,22 @@
+name: Lint
+on:
+  pull_request
+
+jobs:
+  eslint:
+    name: eslint
+    runs-on: ubuntu-20.04
+    steps:
+      - name: checkout the code
+        uses: actions/checkout@v2
+
+      - name: setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 12
+
+      - name: instala dependências
+        run: npm install
+
+      - name: executa o lint pelo pacote npx
+        run: npx eslint
